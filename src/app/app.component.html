@@ -1,0 +1,56 @@
+<div style="text-align:center">
+  <h1>Angular multimedia loader</h1>
+  <h2>Image and video analyzer in Angular</h2>
+</div>
+<div>
+  <input type="file" id="image" name="image" accept="image/*" (change)="onImageSelect($event)" class="inputfile inputfile-1">
+  <label for="image"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+    </svg> Choose an image&hellip;</strong></label>
+</div>
+<div>
+  <table>
+    <thead>
+      <th>Preview</th>
+      <th>Name</th>
+      <th>Size (Bytes)</th>
+      <th>Size (Kilobytes)</th>
+      <th>Format (Browser)</th>
+      <th>Format (Real)</th>
+    </thead>
+    <tr *ngIf="imageObject !== undefined">
+      <td><img src="{{imageUrl}}" width="200 px" height="200px"></td>
+      <td>{{imageObject.name}}</td>
+      <td>{{imageObject.size}}</td>
+      <td>{{getSizeInKilobytes(imageObject.size)}}</td>
+      <td>{{imageObject.type}}</td>
+      <td>{{mimeTypeImage}}</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <input type="file" id="video" name="video" accept="video/*" (change)="onVideoSelect($event)" class="inputfile">
+  <label for="video"><span></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" />
+    </svg> Choose a video&hellip;</strong></label>
+</div>
+<div>
+  <table>
+    <thead>
+      <th>Preview</th>
+      <th>Name</th>
+      <th>Size (Bytes)</th>
+      <th>Size (Megabytes)</th>
+      <th>Format (Browser)</th>
+      <th>Format (Real)</th>
+    </thead>
+    <tr *ngIf="videoObject !== undefined">
+      <td><video width="200 px" height="200px"> <source src="{{videoUrl}}" type="video/mp4"></video></td>
+      <td>{{videoObject.name}}</td>
+      <td>{{videoObject.size}}</td>
+      <td>{{getSizeinMegabytes(videoObject.size)}}</td>
+      <td>{{videoObject.type}}</td>
+      <td>{{mimeTypeVideo}}</td>
+    </tr>
+  </table>
+</div>
